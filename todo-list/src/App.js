@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import ListItem from './ListItem.js';
+import ToDoList from './ToDoList.js';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    // transform             : 'translate(-50%, -50%)'
+  }
+};
 
 class MyList extends Component {
   constructor(props){
@@ -8,10 +20,29 @@ class MyList extends Component {
 
     this.state = {
       toDoItemArray: props.theList,
-      newItem: ''
+      newItem: '',
+      modalIsOpen: false
     };
 
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
   }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
 
   clearList (e){
     this.setState({
@@ -39,16 +70,10 @@ class MyList extends Component {
 
   render() {
 
-    let todoItems = this.state.toDoItemArray.map( (item, index) => (
-      <ListItem doThis={item} key={index} />
-    ))
-
     return (
       <div>
         <h1>Things I should stop procrastinating:</h1>
-        <ul>
-          {todoItems}
-        </ul>
+        <ToDoList toDoItemArray={this.state.toDoItemArray} />
         <form>
           <input type="text"
             placeholder="Type an item here"
@@ -60,6 +85,24 @@ class MyList extends Component {
         <button onClick={(e) => this.clearList(e)}>
           Finished the list!
         </button>
+        <br/>
+
+          <div>
+            <button onClick={this.openModal}>Open Modal</button>
+            <Modal
+              isOpen={this.state.modalIsOpen}
+              onAfterOpen={this.afterOpenModal}
+              onRequestClose={this.closeModal}
+              style={customStyles}
+              contentLabel="Example Modal">
+              <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+              <button onClick={this.closeModal}>close</button>
+              <form>
+
+                <input />
+              </form>
+            </Modal>
+          </div>
       </div>
     );
   }

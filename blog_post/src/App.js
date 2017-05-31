@@ -1,62 +1,48 @@
 import React, {Component} from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 //load in the comment component
-import Comment from './Comment.js';
-import Author from './Author.js';
+import About from './About.js';
+import Main from './Main.js';
+import Post from './Post.js';
 
-class Post extends Component {
-  constructor(props){
-    super();
+var post = {
+  title: "Dinosaurs are awesome",
+  author: "Stealthy Stegosaurus",
+  body: "Check out this body property!",
+  comments: ["First!", "Great post", "Hire this author now!"]
+}
 
-    this.state = {
-      body: props.body,
-      value: ''
-    };
+var authors = ["Stealthy Stegosaurus", "Tiny Trex", "Ivory Iguanadon"]
 
-    this.handleChange = this.handleChange.bind(this);
-    this.changeBody = this.changeBody.bind(this);
-  }
-
-  changeBody(event){
-    this.setState({
-      body: this.state.value ? this.state.value : this.state.body
-    });
-    event.preventDefault();
-  }
-
-  handleChange(event){
-    this.setState({
-      value: event.target.value
-    });
-  }
-
+class App extends Component {
   render() {
-    let allComments = [
-      <Comment body={this.props.comments[0]}/>,
-      <Comment body={this.props.comments[1]}/>,
-      <Comment body={this.props.comments[2]}/>
-    ];
-
-    let authors = [
-      <Author author={this.props.allAuthors[0]}/>,
-      <Author author={this.props.allAuthors[1]}/>,
-      <Author author={this.props.allAuthors[2]}/>
-    ]
-
     return (
-      <div>
-        <h1>{this.props.title}</h1>
-        {authors}
-        <p>{this.state.body}</p>
-        <form onSubmit={this.changeBody}>
-          <input type="submit" value="Edit Body"></input>
-          <input type="text" onChange={this.handleChange}></input>
-        </form>
-        <h3>Comments:</h3>
-        {allComments}
-      </div>
+      <Router>
+        <div>
+          <nav>
+            <Link to="/">Home</Link>{' '}
+            <Link to="/blog">Blog</Link>{' '}
+            <Link to="/about">About</Link>
+          </nav>
+          <Route exact path="/" component={Main}></Route>
+          <Route exact path="/blog" component={
+            () => (<Post title={post.title}
+                      allAuthors={authors}
+                      body={post.body}
+                      comments={post.comments} />
+            )}/>
+          <Route exact path="/about" component={
+              () => (<About me={authors[0]} />
+          )}/>
+        </div>
+      </Router>
     )
   }
 }
 
-export default Post
+export default App
