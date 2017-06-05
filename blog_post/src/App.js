@@ -9,6 +9,7 @@ import {
 import About from './About.js';
 import Main from './Main.js';
 import Post from './Post.js';
+import FavoriteMovies from './FavoriteMovies.js';
 
 var post = {
   title: "Dinosaurs are awesome",
@@ -24,11 +25,16 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <br/>
           <nav>
             <Link to="/">Home</Link>{' '}
             <Link to="/blog">Blog</Link>{' '}
-            <Link to="/about">About</Link>
+            <Link to="/about">About</Link>{' '}
+            <Link to="/favMovies">Favorite Movies</Link>
           </nav>
+          <br/>
+          <hr/>
+          <br/>
           <Route exact path="/" component={Main}></Route>
           <Route exact path="/blog" component={
             () => (<Post title={post.title}
@@ -39,6 +45,9 @@ class App extends Component {
           <Route exact path="/about" component={
               () => (<About me={authors[0]} />
           )}/>
+          <Route exact path="/favMovies" component={
+              () => (<FavoriteMovies />)
+          }/>
         </div>
       </Router>
     )
