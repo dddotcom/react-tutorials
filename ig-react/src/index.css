@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  /*text-align: center;*/
+}
+
+hr {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  display: block;
+  padding:10px 20px 40px 20px;
+}
+
+nav p {
+  float:left;
+  margin: 10px 0px;
+  padding: 0;
+}
+nav a {
+  margin: 10px 10px;
+  font-weight: bold;
+  color: rgb(56, 151,240);
+  text-decoration: none;
+}
+
+nav input {
+}
+
+.float-right {
+  float: right;
+}
+
+hr {
+  border-top: 1px solid rgb(230, 230, 230);
+}
+
+.ig-blue {
+  color: rgb(56, 151,240)
+}
+
+.title {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.4em;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.search {
+  background-color:  rgb(250, 250, 250);
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 5px;
+  padding: 5px 20px;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 1px;
+  margin-left: 29vw;
+}
+
+.search:focus {
+  outline: none;
+}
