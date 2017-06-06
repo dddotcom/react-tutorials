@@ -43,13 +43,18 @@ class Profile extends Component {
 
     return(
       <div className="text-center gray-bg">
-        <ProfilePic img={this.state.profilePic}/>
-        <p className="username">{this.state.username}</p>
-        <div className="profile-nav">
-          <p className="float-left"><strong>{this.state.posts}</strong> posts</p>
-          <p className="float-left"><strong>{this.state.followers}</strong> followers</p>
-          <p className="float-left"><strong>{this.state.following}</strong> following</p>
+
+        <div>
+          <ProfilePic className="float-left" img={this.state.profilePic}/>
+          <p className="username">{this.state.username}</p>
+          <span id="follow"><button className="ig-btn">Follow</button></span>
+          <div className="profile-nav">
+            <p id="left-most" className="float-left"><strong>{this.state.posts}</strong> posts</p>
+            <p className="float-left"><strong>{this.state.followers}</strong> followers</p>
+            <p className="float-left"><strong>{this.state.following}</strong> following</p>
+          </div>
         </div>
+
         <div className="container">
           {upComponents}
         </div>

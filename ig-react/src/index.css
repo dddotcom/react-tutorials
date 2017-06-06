@@ -12,7 +12,9 @@ hr {
 
 nav {
   display: block;
-  padding:10px 20px 40px 20px;
+  padding:20px 20px 60px 20px;
+  width: 70%;
+  margin: auto;
 }
 
 nav p {
@@ -23,7 +25,7 @@ nav p {
 nav a {
   margin: 10px 10px;
   font-weight: bold;
-  color: rgb(56, 151,240);
+  color: rgb(58, 152,240);
   text-decoration: none;
 }
 
@@ -39,14 +41,22 @@ hr {
 }
 
 .ig-blue {
-  color: rgb(56, 151,240)
+  color: rgb(56, 151,240);
+}
+
+.ig-gray {
+  color: rgb(230, 230, 230);
+}
+
+.ig-dark-gray {
+  color: rgb(199, 199, 199);
 }
 
 .title {
-  font-family: 'Pacifico', cursive;
-  font-size: 1.4em;
+  font-family: 'Grand Hotel', cursive;
+  font-size: 1.8em;
   float: left;
-  margin: 0;
+  margin: 0px 0px 0px -18px;
   padding: 0;
 }
 
@@ -54,13 +64,30 @@ hr {
   background-color:  rgb(250, 250, 250);
   border: 1px solid rgb(230, 230, 230);
   border-radius: 5px;
-  padding: 5px 20px;
+  padding: 3px 20px;
   text-align: center;
   font-size: 1em;
-  margin-top: 1px;
-  margin-left: 29vw;
+  margin-top: 7px;
+  margin-left: 13vw;
 }
 
 .search:focus {
   outline: none;
+}
+
+.bar {
+  font-size: 1.4em;
+  font-weight: 300;
+  margin: 0 0 0 12px;
+  padding: 0;
+}
+
+.ig-btn {
+  margin-top:5px;
+  padding: 8px 15px;
+  background-color: rgb(56, 151,240);
+  color: white;
+  border: none;
+  font-size: 1em;
+  border-radius: 5px;
 }
